@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="@vaaceves">
+    <link rel="shortcut icon" href="favicon.ico" />
+    <meta name="description" content="Amplificador Operacional como Comparador de Voltaje - Microelectronica - UAM Azcapotzalco">
+
+    <title>Comparador - OpAmp</title>
+
+
+    <script src="js/vis.min.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="vendor/devicons/css/devicons.min.css" rel="stylesheet">
+    <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/resume.css" rel="stylesheet">
+    <link href="css/vis.min.css" rel="stylesheet">
+    <!---->
+    
+  </head>
+  <style>
+      .col-centered{
+          float: none;
+          margin: 0 auto;
+      }
+    </style>
+  <body id="page-top">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">
+        <span class="d-block d-lg-none">Microelectronica</span>
+        <span class="d-none d-lg-block">
+          <img class="img-fluid img-thumbnail mx-auto mb-2" src="img/logo250.jpg" alt="UAM Azcapotzalco">
+        </span>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#"><strong style="color: black;">Microelectronica</strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#grafica">Ejemplo 1</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#teoria">Teoria</a>
+          </li>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container-fluid p-0">
+
+      <section class="resume-section p-3 p-lg-5 d-flex d-column" id="grafica">
+        <div class="">
+          <h2 class="mb-0">Grafica Caracteristica de
+            <span class="text-primary">Funcion de Transferencia</span>
+          </h2>
+          <div class="subheading mb-5">Graficas de un circuito comparador ·
+            <a href="zambrano.lucila@hotmail.com">M. en C. Lucila Zambrano Valencia </a>
+          </div>
+          <!---->
+          <!---->
+          <div class="container">
+              <div class="row">
+                <div class="col-md" style="padding-top: 10px;">
+                    <h4 class="mb-0">
+                        <span class="text-primary">sen(</span>
+                        wt
+                        <span class="text-primary">)</span>
+                    </h4>
+                    <div class="embed-responsive embed-responsive-4by3">
+                        <iframe class="embed-responsive-item" src="https://www.desmos.com/calculator/l9sypajzvf?embed"  style="border: 1px solid #ccc" frameborder=1></iframe>
+                    </div>
+                    <br>
+                    <center>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#senwt">
+                            Acercar Grafica
+                        </button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#senwtValores">
+                            Tabla de Valores
+                        </button>
+                    </center>
+                </div>
+                <div class="col-md" style="padding-top: 10px;">
+                    <h4 class="mb-0">5
+                        <span class="text-primary">sen(</span>
+                        wt
+                        <span class="text-primary">)</span>
+                    </h4>
+                    <div class="embed-responsive embed-responsive-4by3">
+                        <iframe class="embed-responsive-item" src="https://www.desmos.com/calculator/kk71migzbu?embed"  style="border: 1px solid #ccc" frameborder=1></iframe>
+                    </div>
+                    <br>
+                    <center>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#5senwt">
+                            Acercar Grafica
+                        </button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#5senwtValores">
+                            Tabla de Valores
+                        </button>
+                    </center>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md">
+                    <center>
+                        <br>
+                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#unir">
+                            Unir graficas
+                        </button>
+                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#variaciones">
+                            Ver variacion en el Tiempo
+                        </button>
+                        <br>
+                    </center>
+                </div> 
+              </div>
+              <br>
+              <br>
+              <style>
+                .col-centered{
+                    float: none;
+                    margin: 0 auto;
+                }
+              </style>
+              <div class="row">
+                  <div class="col-sm-6 col-centered">
+                          <h4 class="mb-0">Funcion de
+                              <span class="text-primary">Transferencia</span>
+                          </h4>
+                          <div class="embed-responsive embed-responsive-4by3">
+                              <iframe class="embed-responsive-item" width="200px" src="https://www.desmos.com/calculator/dq7qrkid01?embed"  style="border: 1px solid #ccc" frameborder=1></iframe>
+                          </div>
+                  </div>
+                  <div class="col-sm-6 col-centered">
+                      <h4 class="mb-0">.
+                          <span class="text-primary"></span>
+                      </h4>
+                      <div class="embed-responsive embed-responsive-4by3">
+                          <iframe class="embed-responsive-item" width="200px" src="https://www.desmos.com/calculator/g0xthzbfzl?embed"  style="border: 1px solid #ccc" frameborder=1></iframe>
+                      </div>
+                  </div>           
+              </div>
+              <div class="col-sm col-centered" hidden>
+                  <br>
+                  <center>
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#5senwt">
+                              Acercar Grafica
+                          </button>
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#5senwtValores">
+                              Tabla de Valores
+                          </button>
+                  </center>
+              </div> 
+            </div>
+            <br>
+            <br>
+          <!---->
+          <!---->
+          <!-- Modal SENWT-->
+          <div class="modal fade" id="trans">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <h4 class="modal-title">Un Acercamiento de la grafica</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+                  <!-- Modal body -->
+                  <div class="modal-body">
+                      <div class="col-md">
+                      <div class="embed-responsive embed-responsive-4by3">
+                          <iframe class="embed-responsive-item" src="https://www.desmos.com/calculator/dq7qrkid01?embed"  style="border: 1px solid #ccc" frameborder=1></iframe>
+                      </div>
+                      </div>
+                  </div>
+                  <!-- Modal footer -->
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <!-- CLOSE Modal -->
+          <!-- Modal SENWT VALORES-->
+          <div class="modal fade" id="transValores">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <h4 class="modal-title">Valores de la Grafica</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+                  <!-- Modal body -->
+                  <div class="modal-body">
+                      <center>
+                        <img class="img-fluid" src="img/tablasenwt.png">
+                      </center>
+                  </div>
+                  <!-- Modal footer -->
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <!-- CLOSE Modal -->
+          <!-- Modal SENWT-->
+          <div class="modal fade" id="senwt">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <h4 class="modal-title">Un Acercamiento de la grafica</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+                  <!-- Modal body -->
+                  <div class="modal-body">
+                      <div class="col-md">
+                      <div class="embed-responsive embed-responsive-4by3">
+                          <iframe class="embed-responsive-item" src="https://www.desmos.com/calculator/kdzfs6ska2?embed"  style="border: 1px solid #ccc" frameborder=1></iframe>
+                      </div>
+                      </div>
+                  </div>
+                  <!-- Modal footer -->
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <!-- CLOSE Modal -->
+          <!-- Modal SENWT VALORES-->
+          <div class="modal fade" id="senwtValores">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <h4 class="modal-title">Valores de la Grafica</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+                  <!-- Modal body -->
+                  <div class="modal-body">
+                      <center>
+                        <img class="img-fluid" src="img/tablasenwt.png">
+                      </center>
+                  </div>
+                  <!-- Modal footer -->
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <!-- CLOSE Modal -->
+          <!-- Modal 5SENWT-->
+          <div class="modal fade" id="5senwt">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <h4 class="modal-title">Un Acercamiento de la grafica</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+                  <!-- Modal body -->
+                  <div class="modal-body">
+                      <div class="col-md">
+                      <div class="embed-responsive embed-responsive-4by3">
+                          <iframe class="embed-responsive-item" src="https://www.desmos.com/calculator/abpkc9obwf?embed"  style="border: 1px solid #ccc" frameborder=1></iframe>
+                      </div>
+                      </div>
+                  </div>
+                  <!-- Modal footer -->
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <!-- CLOSE Modal -->
+          <!-- Modal 5SENWT VALORES-->
+          <div class="modal fade" id="5senwtValores">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <h4 class="modal-title">Valores de la Grafica</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+                  <!-- Modal body -->
+                  <div class="modal-body">
+                      <center>
+                        <img class="img-fluid" src="img/tabla5senwt.png">
+                      </center>
+                  </div>
+                  <!-- Modal footer -->
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <!-- CLOSE Modal -->
+          <!-- Modal unir graficas-->
+          <div class="modal fade" id="unir">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <h4 class="modal-title">sen(wt)  &  5sen(wt)</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+                  <!-- Modal body -->
+                  <div class="modal-body">
+                      <div class="col-md">
+                      <div class="embed-responsive embed-responsive-4by3">
+                          <iframe class="embed-responsive-item" src="https://www.desmos.com/calculator/jkj0ufszwl?embed"  style="border: 1px solid #ccc" frameborder=1></iframe>
+                      </div>
+                      </div>
+                  </div>
+                  <!-- Modal footer -->
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <!-- CLOSE Modal -->
+          <!-- Modal variacion tiempo-->
+          <div class="modal fade" id="variaciones">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <h4 class="modal-title">Variacion en el tiempo</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+                  <!-- Modal body -->
+                  <div class="modal-body">
+                      <div class="col-md">
+                          <div class="embed-responsive embed-responsive-4by3">
+                              <iframe class="embed-responsive-item" src="https://www.desmos.com/calculator/oukx0ncsk5?embed"  style="border: 1px solid #ccc" frameborder=1></iframe>
+                          </div>
+                      </div> 
+                  </div>
+                  <!-- Modal footer -->
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <!-- CLOSE Modal -->
+          <!---->
+          <!---->
+          <!--
+          <div id="visualization"></div>
+
+            <script type="text/javascript">
+              var container = document.getElementById('visualization');
+              var items = [
+                  {x: 10, y: -0.54},
+                  {x: 20, y: 0.91},
+                  {x: 30, y: -0.98},
+                  {x: 40, y: 0.74},
+                  {x: 50, y: -0.26},
+                  {x: 60, y: -0.30},
+                  {x: 70, y: 0.77},
+                  {x: 80, y: -0.99},
+              ];
+
+              var dataset = new vis.DataSet(items);
+              var options = {
+                  start: 0,
+                  end: 50
+              };
+              var Graph2d = new vis.Graph2d(container, dataset, options);
+            </script>
+          
+        </div>
+      </section>
+      <div id="visualization"></div>
+
+            <script type="text/javascript">
+              var container = document.getElementById('visualization');
+              var items = [
+                  {x: 10, y: -0.54},
+                  {x: 20, y: 0.91},
+                  {x: 30, y: -0.98},
+                  {x: 40, y: 0.74},
+                  {x: 50, y: -0.26},
+                  {x: 60, y: -0.30},
+                  {x: 70, y: 0.77},
+                  {x: 80, y: -0.99},
+              ];
+
+              var dataset = new vis.DataSet(items);
+              var options = {
+                  start: 0,
+                  end: 50
+              };
+              var Graph2d = new vis.Graph2d(container, dataset, options);
+            </script>
+          
+        </div>
+      </section>
+      <div id="visualization"></div>
+
+            <script type="text/javascript">
+              var container = document.getElementById('visualization');
+              var items = [
+                  {x: 10, y: -1.54},
+                  {x: 20, y: 1.91},
+                  {x: 30, y: -1.98},
+                  {x: 40, y: 1.74},
+                  {x: 50, y: -1.26},
+                  {x: 60, y: -1.30},
+                  {x: 70, y: 1.77},
+                  {x: 80, y: -1.99},
+              ];
+
+              var dataset = new vis.DataSet(items);
+              var options = {
+                  start: 0,
+                  end: 50
+              };
+              var Graph2d = new vis.Graph2d(container, dataset, options);
+            </script>
+          
+        </div>
+      -->
+      </section>
+      <!--
+      -->
+      <section class="resume-section p-3 p-lg-5 d-flex d-column" id="teoria">
+        <div class="">
+          <h3 class="mb-0">Funcion de 
+            <span class="text-primary">Transferencia</span>
+          </h3>
+          <div class="subheading mb-5">
+          </div>
+          <p class="mb-5 text-justify">
+              El modelo básico de un sistema describe matemáticamente la influencia de una señal de entrada u(t) sobre
+              otra señal de salida y(t). Supóngase que ambas están relacionadas mediante una ecuación diferencial lineal con
+              coeficientes constantes, de orden n. 
+          </p>
+          <center>
+            <img class="img-fluid" src="img/relacion-e-s.png">
+          </center>
+          <br>
+          <br>
+          <h4 class="mb-0">Amplificador
+              <span class="text-primary">Operacional</span>
+          </h4>
+          <p class="mb-5 text-justify">
+              La denominación de Amplificador Operacional fue dada originalmente por John Ragazzini en el
+              año 1947 (año en el que, por otro lado, se inventa el primer transistor).
+              Esta denominación apareció por su utilización en las técnicas operacionales, es decir circuitos
+              que ejecutaban operaciones matemáticas tales como Derivación, Integración, Suma, resta,
+              Logaritmos, etc.<br>
+              Como podemos suponer los primeros AO fueron construidos con válvulas por lo que fueron
+              voluminosos y con gran consumo de energía.
+              Con la aparición del transistor Bipolar se construyeron AO discretos, pero la verdadera
+              revolución se produjo en el año 1968 con la fabricación del primer AO como circuito integrado:
+              el μA741 diseñado por Robert Widlar en Fairchild Semiconductor Corporation.  
+          </p>
+          <center>
+              <img class="img-fluid" src="img/opamp.png">
+            </center>
+            <br>
+            <br>
+            <h4 class="mb-0">OpAmp
+                <span class="text-primary">Ideal</span>
+            </h4>
+            <p class="mb-5 text-justify">
+                Normalmente el tema de los AO se inicia con la definición de lo que se conoce como
+                “Amplificador Operacional Ideal”.
+                Previo a ello repasemos los tipos de amplificadores que conocemos y cual es su denominación en
+                función al tipo de entrada / salida:  
+            </p>
+            <center>
+                <img class="img-fluid" src="img/tabla-ideal.png">
+            </center>
+            <br>
+            <p class="mb-5 text-justify">
+                  Un AO ideal es genéricamente un amplificador diferencial de tensión con las siguientes
+                  características:  
+            </p>
+            <center>
+                  <img class="img-fluid" src="img/features-ideal.png">
+            </center>
+            <br>
+            <br>
+            <h4 class="mb-0">Respuesta 
+                <span class="text-primary">Frecuencial</span>
+            </h4>
+            <p class="mb-5 text-justify">
+                Se conoce como respuesta frecuencial de un sistema a la respuesta del mismo, en régimen permanente,
+                cuando se utiliza como señal de entrada una senoide.<br>
+                 La respuesta de un sistema lineal estable a una señal de excitación de tipo senoidal, es otra señal
+                senoidal de la misma frecuencia que la de entrada, pero que difiere de ella en los valores de su amplitud y de su
+                ángulo de fase. La amplitud de la señal de salida y su ángulo de fase son función de la frecuencia.  
+            </p>
+            <div class="col-lg-10 col-centered">
+                <center>
+                    <img class="img-fluid" src="img/respuesfrec.png">
+                </center>
+            </div>
+            <br>
+            <br>
+          <!-- <p class="mb-5 text-justify">
+              <br>  
+              •	Si V1 es mayor que V2, la tensión a la salida del comparador sera la alimentación positiva de la fuente Vs+.<br>
+              •	Si V2 es mayor que V1, la tensión a la salida del comparador sera la alimentación negativa de la fuente Vs-.<br><br>
+              Un amplificador operacional, trabajando como comparador, puede ser configurado en modo inversor o no inversor, entre otras variaciones mas, dependiendo a que entrada se aplique la señal a detectar y la señal de referencia.             
+        </p>
+        <h3 class="mb-0">
+            <span class="text-primary">Comparador</span>
+        </h3>
+        <p class="mb-5 text-justify"> <br>Primero supongamos que el VIN es menor que el nivel de voltaje de CC en VREF, 
+         (VIN < VREF). Como la entrada no inversora (positiva) del comparador es menor que la entrada inversora
+          (negativa), la salida será BAJA y en la tensión de alimentación negativa, 
+         -Vcc producirá una saturación negativa de la salida.
+        </p>
+        <center>
+            <img class="img-fluid" src="img/comp.png">
+          </center>
+        <p class="mb-5 text-justify"> <br>Si ahora aumentamos la tensión de entrada, VIN, de modo que su valor 
+          sea mayor que el voltaje de referencia VREF en la entrada de inversión, la tensión de salida cambia 
+          rápidamente ALTA hacia la tensión de alimentación positiva, + Vcc, lo que da como resultado una saturación
+           positiva de la salida. Si reducimos de nuevo el voltaje de entrada VIN, de modo que sea ligeramente menor 
+           que el voltaje de referencia, la salida del amplificador operacional vuelve a su voltaje de saturación
+            negativo actuando como un detector de umbral.
+        </p>
+        <p class="mb-5 text-justify"> Entonces podemos ver que el comparador de tensión del op-amp es un dispositivo 
+          cuya salida depende del valor de la tensión de entrada, VIN con respecto a algún nivel de tensión CC ya 
+          que la salida es ALTA cuando la tensión en la entrada no inversora es mayor que la tensión en la entrada 
+          inversora, y BAJA cuando la entrada no inversora es menor que la tensión de entrada inversora. 
+          Esta condición es verdadera independientemente de si la señal de entrada está conectada a la entrada inversora o no inversora del comparador.
+        </p>
+        <p class="mb-5 text-justify"> 
+            También podemos ver que el valor de la tensión de salida depende por completo de la tensión 
+            de la fuente de alimentación de los amplificadores operacionales. En teoría, debido a los 
+            amplificadores operacionales de alto lazo abierto, la magnitud de su voltaje de salida podría ser
+             infinito en ambas direcciones (± & # 8734). Sin embargo, prácticamente, y por razones obvias, 
+            está limitado por los amplificadores op-amps que suministran VOUT = + Vcc o VOUT = -Vcc.
+        </p> -->
+        </div>
+      </section>
+      <footer>
+          <!--Copyright-->
+            <div class="footer-copyright py-3 text-center bg-primary">
+                <span class="text-white">
+                     2018 - 
+                    <a style="color:lightgreen;" href="https://www.thinkof.tech/"> Think of Tech</a> 
+                    <span style="color:darkgreen;">(ToT)</span>
+                </span>
+            </div>
+            <!--/.Copyright-->
+  
+        </footer>
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/resume.js"></script>
+
+  </body>
+
+</html>
